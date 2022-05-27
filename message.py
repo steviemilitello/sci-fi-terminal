@@ -1,11 +1,21 @@
 from tabulate import tabulate
+from art import *
+
+# big, doom, 
+
+def welcome_screen():
+    tprint("WELCOME",font="doom")
+    input(f'PRESS ENTER TO BEGIN')
+    print(f'INITIALIZING...')
+    boot_screen()
 
 table = [['MESSAGE', 'NAVIGATION', 'DIAGNOSTICS'], ['CREW MANIFEST', 'CARGO MANIFEST', 'SYSTEM INFO']]
 
 def boot_screen():
+    print ()
     print(tabulate(table, headers='firstrow', tablefmt='fancy_grid'))
     navigation_msg = input(f'\nPROCEED\n \n')
-    if navigation_msg == "message":
+    if navigation_msg.casefold() == "message":
         start_message()
         response()
 
@@ -31,4 +41,4 @@ def response():
          start_message()
          response()
 
-boot_screen()
+welcome_screen()
