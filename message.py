@@ -1,3 +1,14 @@
+from tabulate import tabulate
+
+table = [['MESSAGE', 'NAVIGATION', 'DIAGNOSTICS'], ['CREW MANIFEST', 'CARGO MANIFEST', 'SYSTEM INFO']]
+
+def boot_screen():
+    print(tabulate(table, headers='firstrow', tablefmt='fancy_grid'))
+    navigation_msg = input(f'\nPROCEED\n \n')
+    if navigation_msg == "message":
+        start_message()
+        response()
+
 # add typewriter effect so that it appears it's being written in real time
 
 # here we are getting the message to appear in the terminal
@@ -20,5 +31,4 @@ def response():
          start_message()
          response()
 
-start_message()
-response()
+boot_screen()
