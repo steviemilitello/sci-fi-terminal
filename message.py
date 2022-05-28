@@ -15,22 +15,42 @@ def welcome_screen():
 
 #boot screen table
 
-table = [['MESSAGE', 'NAVIGATION', 'DIAGNOSTICS'], ['CREW', 'CARGO', 'SYSTEM INFO']]
+nav_table = [['MESSAGE', 'NAVIGATION', 'DIAGNOSTICS'], ['CREW', 'CARGO', 'SYSTEM INFO']]
+msg_table = [
+    ['SENDER', 'MESSAGE'], 
+    ['Jericho Van Wyck', 'Bounty: Roxie Archer | Reward: 1000 Credits'], 
+    ['Ama Dove', 'Smuggling: Help get Ressie Graves off Sanctuary | Reward: 700 Credits'],
+    ['*******', 'S.O.S SOLITUDE MINING COLONY']
+    ] 
 
 #boot screen
 
 def boot_screen():
-    print ()
-    print(tabulate(table, headers='firstrow', tablefmt='fancy_grid'))
+    print()
+    print(tabulate(nav_table, headers='firstrow', tablefmt='fancy_grid'))
     navigation_msg = input(f'\nENTER COMMAND\n \n')
     if navigation_msg.casefold() == "message":
-        start_message()
-        response()
+        message_prompt()
     if navigation_msg.casefold() != "message" or "navigation" or "diagnostics" or "crew manifest" or "cargo manifest" or "system info":
         print(f'\nCOMMAND NOT FOUND...ENTER VALID COMMAND')
         boot_screen()
 
 #message
+
+def message_prompt():
+    message = input(f'\nOPTIONS: VIEW MESSAGES / SEND MESSAGE\n \n')
+    if message.casefold() == "view":
+        print()
+        print(tabulate(msg_table, headers='firstrow', tablefmt='fancy_grid'))
+        exit_prompt()
+    if message.casefold() == "send":
+        start_message()
+        response()
+
+def exit_prompt():
+     exit_msg = input(f'\nENTER COMMAND\n \n')
+     if exit_msg.casefold() == "exit":
+         boot_screen()
 
 # here we are getting the message to appear in the terminal
 def start_message():
