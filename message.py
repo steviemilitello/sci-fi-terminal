@@ -1,7 +1,11 @@
+# dependencies
+
 from tabulate import tabulate
 from art import *
 
-# big, doom, 
+# add typewriter effect so that it appears it's being written in real time
+
+#welcome screen
 
 def welcome_screen():
     tprint("WELCOME",font="doom")
@@ -9,17 +13,24 @@ def welcome_screen():
     print(f'INITIALIZING...')
     boot_screen()
 
-table = [['MESSAGE', 'NAVIGATION', 'DIAGNOSTICS'], ['CREW MANIFEST', 'CARGO MANIFEST', 'SYSTEM INFO']]
+#boot screen table
+
+table = [['MESSAGE', 'NAVIGATION', 'DIAGNOSTICS'], ['CREW', 'CARGO', 'SYSTEM INFO']]
+
+#boot screen
 
 def boot_screen():
     print ()
     print(tabulate(table, headers='firstrow', tablefmt='fancy_grid'))
-    navigation_msg = input(f'\nPROCEED\n \n')
+    navigation_msg = input(f'\nENTER COMMAND\n \n')
     if navigation_msg.casefold() == "message":
         start_message()
         response()
+    if navigation_msg.casefold() != "message" or "navigation" or "diagnostics" or "crew manifest" or "cargo manifest" or "system info":
+        print(f'\nCOMMAND NOT FOUND...ENTER VALID COMMAND')
+        boot_screen()
 
-# add typewriter effect so that it appears it's being written in real time
+#message
 
 # here we are getting the message to appear in the terminal
 def start_message():
@@ -36,9 +47,12 @@ def response():
     message = input(f'ENTER RESPONSE... \n \n')
     if message == "exit":
          print(f'\nENDING CORRESPONDENCE')
+         boot_screen()
     else: 
          print(f'\nTRANSMITTING RESPONSE...')
          start_message()
          response()
+
+# run welcome screen at start
 
 welcome_screen()
