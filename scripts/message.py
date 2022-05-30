@@ -1,5 +1,6 @@
 # dependencies
 
+from tables import nav_table, msg_table
 from tabulate import tabulate
 from art import *
 
@@ -12,16 +13,6 @@ def welcome_screen():
     input(f'PRESS ENTER TO BEGIN')
     print(f'INITIALIZING...')
     boot_screen()
-
-#boot screen table
-
-nav_table = [['MESSAGE', 'NAVIGATION', 'DIAGNOSTICS'], ['CREW', 'CARGO', 'SYSTEM INFO']]
-msg_table = [
-    ['SENDER', 'MESSAGE'], 
-    ['Jericho Van Wyck', 'Bounty: Roxie Archer | Reward: 1000 Credits'], 
-    ['Ama Dove', 'Smuggling: Help get Ressie Graves off Sanctuary | Reward: 700 Credits'],
-    ['*******', 'S.O.S SOLITUDE MINING COLONY']
-    ] 
 
 #boot screen
 
