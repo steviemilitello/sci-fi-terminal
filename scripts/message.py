@@ -1,6 +1,6 @@
 # dependencies
 
-from tables import nav_table, msg_dict
+from tables import main_menu_table, msg_dict
 from tabulate import tabulate
 from art import *
 
@@ -8,23 +8,23 @@ from art import *
 
 #welcome screen
 
-def welcome_screen():
+def boot_screen():
     tprint("WELCOME",font="doom")
     input(f'PRESS ENTER TO BEGIN')
     print(f'INITIALIZING...')
-    boot_screen()
+    main_menu()
 
 #boot screen
 
-def boot_screen():
+def main_menu():
     print()
-    print(tabulate(nav_table, headers='firstrow', tablefmt='fancy_grid'))
+    print(tabulate(main_menu_table, headers='firstrow', tablefmt='fancy_grid'))
     navigation_msg = input(f'\nENTER COMMAND\n \n')
     if navigation_msg.casefold() == "message":
         message_prompt()
     if navigation_msg.casefold() != "message" or "navigation" or "diagnostics" or "crew manifest" or "cargo manifest" or "system info":
         print(f'\nCOMMAND NOT FOUND...ENTER VALID COMMAND')
-        boot_screen()
+        main_menu()
 
 #message
 
@@ -41,7 +41,7 @@ def message_prompt():
 def exit_prompt():
      exit_msg = input(f'\nENTER COMMAND\n \n')
      if exit_msg.casefold() == "exit":
-         boot_screen()
+         main_menu()
 
 # here we are getting the message to appear in the terminal
 def start_message():
@@ -58,7 +58,7 @@ def response():
     message = input(f'ENTER RESPONSE... \n \n')
     if message == "exit":
          print(f'\nENDING CORRESPONDENCE')
-         boot_screen()
+         main_menu()
     else: 
          print(f'\nTRANSMITTING RESPONSE...')
          start_message()
@@ -66,4 +66,6 @@ def response():
 
 # run welcome screen at start
 
-welcome_screen()
+boot_screen()
+
+# exits program in terminal by typing exit() - use to exit the script itself once you are done using
