@@ -1,6 +1,6 @@
 # dependencies
 
-from tables import nav_table, msg_table
+from tables import nav_table, msg_dict
 from tabulate import tabulate
 from art import *
 
@@ -32,7 +32,7 @@ def message_prompt():
     message = input(f'\nOPTIONS: VIEW MESSAGES / SEND MESSAGE\n \n')
     if message.casefold() == "view":
         print()
-        print(tabulate(msg_table, headers='firstrow', tablefmt='fancy_grid'))
+        print(tabulate(msg_dict, headers='keys', tablefmt='fancy_grid'))
         exit_prompt()
     if message.casefold() == "send":
         start_message()

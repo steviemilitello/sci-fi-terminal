@@ -5,9 +5,17 @@ nav_table = [
     ['CREW', 'CARGO', 'SYSTEM INFO']
     ]
 
-msg_table = [
-    ['SENDER', 'MESSAGE'], 
-    ['Jericho Van Wyck', 'Bounty: Roxie Archer | Reward: 1000 Credits'], 
-    ['Ama Dove', 'Smuggling: Get Ressie Graves off Sanctuary | Reward: 700 Credits'],
-    ['No Reply', 'SOLITUDE MINING COLONY AUTOMATED S.O.S. PLEASE RESPONSE. ']
-    ] 
+msg_dict = {
+    "SENDER": [
+        "Jericho Van Wyck", 
+        "Ama Dove", 
+        "No Reply"
+    ],
+
+    "MESSAGE": [
+        "Bounty: Roxie Archer | Reward: 1000 Credits",
+        "Smuggling: Get Ressie Graves off Sanctuary | Reward: 700 Credits",
+        "SOLITUDE MINING COLONY AUTOMATED S.O.S. PLEASE RESPONSE"
+    ]
+
+}
