@@ -1,14 +1,16 @@
 import curses 
-from curses import wrapper, panel
+from curses import wrapper
 from curses.textpad import Textbox, rectangle
 
 curses.initscr()
 
-win1 = curses.newwin(1, 20, 45, 87)
-
+win1 = curses.newwin(1, 30, 44, 77)
+win2 = curses.newwin(18, 50, 28, 22)
+box = Textbox(win2)
 
 def main(stdscr):
     win1.clear()
+    win2.clear()
     stdscr.addstr(17, 25, " _    _ _____ _     _____ ________  ___ _____ ",curses.A_BOLD)
     stdscr.addstr(18, 25, "| |  | |  ___| |   /  __ \  _  |  \/  ||  ___|",curses.A_BOLD)
     stdscr.addstr(19, 25, "| |  | | |__ | |   | /  \/ | | | .  . || |__  ",curses.A_BOLD)
@@ -18,25 +20,34 @@ def main(stdscr):
     stdscr.addstr(24, 37, "PRESS ENTER TO BEGIN ", curses.A_BOLD)
     win1.addstr("copyright", curses.A_BOLD)
     win1.refresh()
-    # box = Textbox(win2)
-    # rectangle(stdscr, 1, 1, 5, 20)
-    # stdscr.refresh()
-    # box.edit() #ctrl + g to get out
-    # text = box.gather().strip().replace("\n", "") # for getting text to appear all on one line
-    # stdscr.addstr(10, 40, text)
+    win2.refresh()
     while True:
         key = stdscr.getkey()
         if key == "KEY_ENTER" or ord("\n") or 10 or 13 or 36 or 76:
             stdscr.clear()
             win1.clear()
-            rectangle(stdscr, 20, 5, 25, 85)
+            win2.clear()
+            rectangle(stdscr, 20, 19, 26, 92)
+            rectangle(stdscr, 20, 5, 22, 35)
+            rectangle(stdscr, 20, 5, 24, 35)
+            rectangle(stdscr, 20, 5, 26, 35)
+            rectangle(stdscr, 20, 19, 22, 35)
+            rectangle(stdscr, 20, 19, 24, 35)
+            rectangle(stdscr, 20, 19, 26, 35)
             stdscr.addstr(21, 7, "MESSAGES", curses.A_BOLD)
-            stdscr.addstr(22, 7, "NAVIGATION", curses.A_BOLD)
-            stdscr.addstr(23, 7, "DIAGNOSTICS", curses.A_BOLD)
-            stdscr.addstr(21, 20, "CREW", curses.A_BOLD)
-            stdscr.addstr(22, 20, "CARGO", curses.A_BOLD)
-            stdscr.addstr(23, 20, "SYSTEM INFO", curses.A_BOLD)
-            stdscr.refresh()
+            stdscr.addstr(23, 7, "NAVIGATION", curses.A_BOLD)
+            stdscr.addstr(25, 7, "DIAGNOSTICS", curses.A_BOLD)
+            stdscr.addstr(21, 21, "CREW", curses.A_BOLD)
+            stdscr.addstr(23, 21, "CARGO", curses.A_BOLD)
+            stdscr.addstr(25, 21, "SYSTEM INFO", curses.A_BOLD)
+            stdscr.addstr(28, 7, "ENTER COMMAND: ", curses.A_BOLD)
+            while True:
+                key = stdscr.getkey()
+                if key == "KEY_ENTER" or ord("\n") or 10 or 13 or 36 or 76: 
+                    box.edit()
+                    text = box.gather().strip().replace("\n", "")
+                    stdscr.addstr(2, 40, text)
+                    stdscr.refresh()
         else:
             stdscr.addstr(17, 25, "ERROR", curses.A_BOLD)
 
