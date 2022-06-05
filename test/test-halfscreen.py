@@ -5,7 +5,7 @@ from curses.textpad import Textbox, rectangle
 curses.initscr()
 
 win1 = curses.newwin(1, 30, 44, 77)
-win2 = curses.newwin(18, 50, 28, 22)
+win2 = curses.newwin(1, 50, 28, 22)
 box = Textbox(win2)
 
 def main(stdscr):
@@ -46,7 +46,13 @@ def main(stdscr):
                 if key == "KEY_ENTER" or ord("\n") or 10 or 13 or 36 or 76: 
                     box.edit()
                     text = box.gather().strip().replace("\n", "")
-                    stdscr.addstr(2, 40, text)
+                    # stdscr.addstr(2, 40, text)
+                    if text == "message" or "MESSAGE":
+                        # stdscr.clear()
+                        # stdscr.refresh()
+                        # # win2.clear()
+                        # # win2.refresh
+                        stdscr.addstr(30, 7, "VIEW / SEND ", curses.A_BOLD)
                     stdscr.refresh()
         else:
             stdscr.addstr(17, 25, "ERROR", curses.A_BOLD)
