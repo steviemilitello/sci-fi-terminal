@@ -46,16 +46,20 @@ def main(stdscr):
                 if key == "KEY_ENTER" or ord("\n") or 10 or 13 or 36 or 76: 
                     box.edit()
                     text = box.gather().strip().replace("\n", "")
-                    # stdscr.addstr(2, 40, text)
                     if text == "message" or "MESSAGE":
-                        # stdscr.clear()
-                        # stdscr.refresh()
-                        # # win2.clear()
-                        # # win2.refresh
                         stdscr.addstr(30, 7, "VIEW / SEND ", curses.A_BOLD)
-                    stdscr.refresh()
-        else:
-            stdscr.addstr(17, 25, "ERROR", curses.A_BOLD)
+                    if text == "navigation" or "NAVIGATION":
+                        stdscr.addstr(30, 7, "NAVIGATION ", curses.A_BOLD)
+                    if text == "diagnostics" or "DIAGNOSTICS":
+                        stdscr.addstr(30, 7, "DIAGNOSTICS ", curses.A_BOLD)
+                    if text == "crew" or "CREW":
+                        stdscr.addstr(30, 7, "CREW MANIFEST ", curses.A_BOLD)
+                    if text == "cargo" or "CARGO":
+                        stdscr.addstr(30, 7, "CARGO ", curses.A_BOLD)
+                    if text == "system info" or "SYSTEM INFO ":
+                        stdscr.addstr(30, 7, "SYSTEM INFO", curses.A_BOLD)
+                    else:
+                        stdscr.addstr(30, 7, "ERROR", curses.A_BOLD)
 
 wrapper(main)
 
